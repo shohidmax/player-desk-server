@@ -104,7 +104,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("UMS - User Management System server running at  : ", port);
+  console.log("Player Desk -  server running at  : ", port);
 });
 
 
