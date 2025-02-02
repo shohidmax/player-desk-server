@@ -9,24 +9,42 @@ const port = process.env.PORT || 3009;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-const uri = `mongodb+srv://umsdubai:1Tieyhtu1IRJR0rI@ums.b2w96to.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// const uri = `mongodb+srv://playerdesk99:Player9090@@d@cluster0.o9j2d.mongodb.net/?retryWrites=true&w=majority`;
+// // const uri2 = `mongodb+srv://umsdubai:1Tieyhtu1IRJR0rI@ums.b2w96to.mongodb.net/?retryWrites=true&w=majority`;
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+ 
 
-async function run() {
+const uri = "mongodb+srv://player_desk:6quHfgMtCT9EM5L4@cluster0.o9j2d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+
+
+
+
+
+async function run() { 
   try {
     await client.connect();
-    console.log('db connected');
+    console.log('db connected');  
     // const usersCollection = client.db('ums1').collection('user'); 
     // const tempCollection = client.db('ums1').collection('temp'); 
     // const arduino = client.db('ums1').collection('arduino'); 
 
+console.log(process.env.Db_user);
 
-
-    app.get('/api/users', async (req, res) => {
-      const query = {};
-      const cursor = usersCollection.find(query); 
-      const hold = await cursor.toArray();
-      res.send(hold);
+    app.get(`${process.env.Api_User}lol`, async (req, res) => {
+      // const query = {};
+      // const cursor = usersCollection.find(query); 
+      // const hold = await cursor.toArray();
+      
+      res.send('hello');
     });
     app.get('/led', async (req, res) => {
       const query = {};
